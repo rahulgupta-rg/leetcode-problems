@@ -1,4 +1,4 @@
-// Last updated: 7/28/2025, 11:03:45 AM
+// Last updated: 7/28/2025, 11:04:39 AM
 class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         boolean[] visited = new boolean[n];
@@ -23,7 +23,6 @@ class Solution {
                     visited[i] = true;
                 }
             }
-            System.out.println("Inside loop");
         }
         
         return visited[destination];
