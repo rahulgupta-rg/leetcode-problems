@@ -1,13 +1,19 @@
-// Last updated: 8/23/2025, 10:43:12 AM
+// Last updated: 8/23/2025, 11:14:37 AM
 class Solution {
-    public int maxProfit(int[] prices) {
-        int profit = 0;
-        for(int i = 1 ; i < prices.length;i++) {
-            int priceDiff = prices[i] - prices[i-1];
-            if (priceDiff > 0) {
-                profit+=priceDiff;
+    public int majorityElement(int[] nums) {
+        Map<Integer, Integer> frequency = new HashMap<>();
+        int element=nums[0];
+        int count = 1;
+        frequency.put(element, count);
+        for(int i = 1 ; i <nums.length;i++) {
+            int num = nums[i];
+            int tempFrequency = frequency.getOrDefault(num, 0)+1;
+            frequency.put(num, tempFrequency);
+            if(tempFrequency> count) {
+                count = tempFrequency;
+                element = num;
             }
         }
-        return profit;
+        return element;
     }
 }
