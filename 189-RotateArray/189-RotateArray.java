@@ -1,21 +1,17 @@
-// Last updated: 8/23/2025, 10:15:42 AM
+// Last updated: 8/23/2025, 10:24:06 AM
 class Solution {
-    public void rotate(int[] nums, int k) {
-        int n = nums.length;
-        k %= n; 
+    public int maxProfit(int[] prices) {
+        int maxProfit = 0;
 
-        reverse(nums, 0, n - 1);  
-        reverse(nums, 0, k - 1);   
-        reverse(nums, k, n - 1);   
-    }
+        int minPrice = Integer.MAX_VALUE;
 
-    private void reverse(int[] nums, int left, int right) {
-        while (left < right) {
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
-            left++;
-            right--;
+        for(int i : prices) {
+            if(i < minPrice) {
+                minPrice = i;
+            } else {
+                maxProfit = Math.max(maxProfit, i - minPrice);
+            }
         }
+        return maxProfit;
     }
 }
